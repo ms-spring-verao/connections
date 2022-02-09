@@ -1,13 +1,18 @@
 package com.pingr.Connections.application;
 
 import com.pingr.Connections.core.Account;
+import com.pingr.Connections.core.SynchronizeAccount;
 import com.pingr.Connections.core.events.AccountCreatedEvent;
 import com.pingr.Connections.core.events.AccountDeletedEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
 @Service
 public class KafkaConsumerService {
+
+    @Autowired
+    private SynchronizeAccount syncAcc;
 
     @KafkaListener(
             containerFactory = "accountCreatedEventKafkaListenerContainerFactory",
@@ -16,7 +21,7 @@ public class KafkaConsumerService {
     )
     public void handleAccountCreation(AccountCreatedEvent event) {
         Account account = event.extract();
-        System.out.println(account);
+        this.syncAcc.store(account);
     }
 
     @KafkaListener(
@@ -26,6 +31,6 @@ public class KafkaConsumerService {
     )
     public void handleAccountDeletion(AccountDeletedEvent event) {
         Account account = event.extract();
-        System.out.println(account);
+        this.syncAcc.remove(account);
     }
 }
