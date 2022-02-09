@@ -2,8 +2,8 @@ package com.pingr.Connections.application;
 
 import com.pingr.Connections.application.DTOs.Friendship;
 import com.pingr.Connections.core.Account;
-import com.pingr.Connections.core.CancelFriendship;
-import com.pingr.Connections.core.EstablishFriendship;
+import com.pingr.Connections.core.services.CancelFriendship;
+import com.pingr.Connections.core.services.EstablishFriendship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

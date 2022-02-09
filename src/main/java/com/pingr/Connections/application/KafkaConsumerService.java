@@ -1,7 +1,7 @@
 package com.pingr.Connections.application;
 
 import com.pingr.Connections.core.Account;
-import com.pingr.Connections.core.SynchronizeAccount;
+import com.pingr.Connections.core.services.SynchronizeAccount;
 import com.pingr.Connections.core.events.AccountCreatedEvent;
 import com.pingr.Connections.core.events.AccountDeletedEvent;
 import org.springframework.beans.factory.annotation.Autowired;

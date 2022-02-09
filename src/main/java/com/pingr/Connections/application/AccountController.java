@@ -1,7 +1,7 @@
 package com.pingr.Connections.application;
 
 import com.pingr.Connections.application.DTOs.AccountFriends;
-import com.pingr.Connections.core.QueryFriendship;
+import com.pingr.Connections.core.services.QueryFriendship;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,5 +1,7 @@
-package com.pingr.Connections.core;
+package com.pingr.Connections.core.services;
 
+import com.pingr.Connections.core.Account;
+import com.pingr.Connections.core.AccountRepository;
 import com.pingr.Connections.core.exceptions.AccountNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

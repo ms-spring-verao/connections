@@ -1,5 +1,8 @@
-package com.pingr.Connections.core;
+package com.pingr.Connections.core.services;
 
+import com.pingr.Connections.core.Account;
+import com.pingr.Connections.core.AccountRepository;
+import com.pingr.Connections.core.EventsPublisher;
 import com.pingr.Connections.core.exceptions.AccountNotFoundException;
 import com.pingr.Connections.core.exceptions.FriendshipValidationException;
 import com.pingr.Connections.core.exceptions.SelfFriendshipException;
@@ -10,12 +13,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EstablishFriendship {
+public class CancelFriendship {
     private final AccountRepository repo;
     private final EventsPublisher publisher;
 
     @Autowired
-    public EstablishFriendship(AccountRepository repo, EventsPublisher publisher) {
+    public CancelFriendship(AccountRepository repo, EventsPublisher publisher) {
         this.repo = repo;
         this.publisher = publisher;
     }
@@ -45,9 +48,9 @@ public class EstablishFriendship {
     }
 
     public void between(Account a, Account b) {
-        a.addFriend(b);
-        b.addFriend(a);
+        a.removeFriend(b);
+        b.removeFriend(a);
         this.repo.saveAll(List.of(a, b));
-        this.publisher.emitFriendshipEstablished(a, b);
+        this.publisher.emitFriendshipCanceled(a, b);
     }
 }
