@@ -12,10 +12,12 @@ import java.util.Optional;
 @Service
 public class EstablishFriendship {
     private final AccountRepository repo;
+    private final EventsPublisher publisher;
 
     @Autowired
-    public EstablishFriendship(AccountRepository repo) {
+    public EstablishFriendship(AccountRepository repo, EventsPublisher publisher) {
         this.repo = repo;
+        this.publisher = publisher;
     }
 
     private void ensureExistence(Account account) throws AccountNotFoundException {
@@ -45,6 +47,7 @@ public class EstablishFriendship {
     public void between(Account a, Account b) {
         a.addFriend(b);
         b.addFriend(a);
-        List<Account> accounts = this.repo.saveAll(List.of(a, b));
+        this.repo.saveAll(List.of(a, b));
+        this.publisher.emitFriendshipEstablished(a, b);
     }
 }
