@@ -1,6 +1,7 @@
 package com.pingr.Connections.core;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,10 +15,12 @@ public class Account {
     private Set<Long> friendsIds;
 
     public Account() {
+        this.friendsIds = new HashSet<>();
     }
 
     public Account(Long id) {
         this.id = id;
+        this.friendsIds = new HashSet<>();
     }
 
     public Account(Long id, Set<Long> friendsIds) {
