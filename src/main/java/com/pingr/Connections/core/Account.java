@@ -29,6 +29,10 @@ public class Account {
         this.friendsIds.add(account.getId());
     }
 
+    public void removeFriend(Account account) {
+        this.friendsIds.remove(account.getId());
+    }
+
     public Set<Long> getFriendsIds() {
         return friendsIds;
     }
@@ -64,4 +68,5 @@ public class Account {
                 "id=" + id +
                 '}';
     }
+
 }
