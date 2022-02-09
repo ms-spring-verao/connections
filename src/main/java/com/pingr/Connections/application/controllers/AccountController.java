@@ -1,4 +1,4 @@
-package com.pingr.Connections.application;
+package com.pingr.Connections.application.controllers;
 
 import com.pingr.Connections.application.DTOs.AccountFriends;
 import com.pingr.Connections.core.services.QueryFriendship;
